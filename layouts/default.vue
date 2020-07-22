@@ -76,7 +76,11 @@
       color="light-blue accent-4"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title
+        v-text="title"
+        @click="$router.push('/')"
+        style="cursor: pointer;"
+      />
     </v-app-bar>
     <v-main>
       <v-container>
@@ -86,7 +90,7 @@
     <v-footer app dark color="light-blue accent-4" absolute inset>
       <v-spacer></v-spacer>
       <div>
-        <span>&copy; 2019 ChelcyNetwork</span>
+        <span>&copy; 2020 Chelcy</span>
       </div>
       <v-spacer></v-spacer>
     </v-footer>
@@ -105,7 +109,7 @@ export default {
       },
     ],
     athletics: [],
-    title: 'ChelcyNetwork Athletic Ranking',
+    title: 'ChelcyNetwork Information',
   }),
   created() {
     this.getAthletics();
