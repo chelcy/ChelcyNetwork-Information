@@ -81,6 +81,27 @@
         @click="$router.push('/')"
         style="cursor: pointer;"
       />
+      <v-spacer></v-spacer>
+      <template v-if="$vuetify.breakpoint.mdAndUp">
+        <v-btn text href="https://www.mchel.net" target="_blank">
+          <v-avatar size="29" class="mr-1">
+            <img src="/favicon.ico" />
+          </v-avatar>
+          <span class="text-caption">ChelcyNetwork Web</span>
+        </v-btn>
+        <v-btn text href="https://twitter.com/ChelcyNetwork" target="_blank">
+          <v-icon class="mr-1">
+            fab fa-twitter
+          </v-icon>
+          <span class="text-caption">@ChelcyNetwork</span>
+        </v-btn>
+        <v-btn text href="https://twitter.com/chelcy_nico" target="_blank">
+          <v-icon class="mr-1">
+            fab fa-twitter
+          </v-icon>
+          <span class="text-caption">@chelcy_nico</span>
+        </v-btn>
+      </template>
     </v-app-bar>
     <v-main>
       <v-container>
