@@ -5,7 +5,7 @@
         <v-card-title class="headline">
           国リスト
         </v-card-title>
-        <v-card-text>
+        <v-card-text class="scroll-inner">
           <v-data-table
             :headers="headers"
             :items="ranking"
@@ -13,8 +13,12 @@
             :loading="loading"
             hide-default-footer
             class="elevation-1"
+            :mobile-breakpoint="0"
             dense
           >
+            <template #item.flag="props">
+              <country-flag :country="props.item.country"></country-flag>
+            </template>
             <template #item.country="props">
               {{ (countryData[props.item.country] || {}).name }}
               ({{ props.item.country }})
@@ -42,6 +46,13 @@ export default {
     loading: false,
     headers: [
       {
+        text: '',
+        value: 'flag',
+        sortable: false,
+        align: 'center',
+        width: '2rem',
+      },
+      {
         text: '国名',
         value: 'country',
       },
@@ -64,7 +75,7 @@ export default {
     // ランキングの取得
     async setRanking() {
       try {
-        let { data } = await this.$axios.get(
+        const { data } = await this.$axios.get(
           'https://api.mchel.net/v1/player_country',
         );
         console.log(data);
@@ -76,6 +87,9 @@ export default {
     getCountryName(code) {
       return countryData[code] ? countryData[code].name : '';
     },
+  },
+  head: {
+    title: 'General',
   },
 };
 </script>

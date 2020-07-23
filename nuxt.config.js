@@ -17,7 +17,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-head
    */
   head: {
-    titleTemplate: 'ChelcyNetwork | Athletic Ranking | %s',
+    titleTemplate: 'ChelcyNetwork Information | %s',
     title: '',
     meta: [
       { charset: 'utf-8' },
@@ -25,7 +25,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content: 'ちぇる鯖の各種情報を表示するweb',
       },
     ],
     link: [
@@ -44,7 +44,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@/assets/style.scss'],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins

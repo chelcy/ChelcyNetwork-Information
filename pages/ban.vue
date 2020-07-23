@@ -10,8 +10,8 @@
           </v-btn>
         </v-card-title>
         <v-card-text>
-          <v-layout row wrap mb-3>
-            <v-flex xs12 md4 xl3 offset-md8 offset-xl9>
+          <v-row class="mb-3">
+            <v-col cols="12" md="4" xl="3" offset-md="8" offset-xl="9">
               <v-text-field
                 v-model="search"
                 append-icon="search"
@@ -19,38 +19,41 @@
                 single-line
                 hide-details
               ></v-text-field>
-            </v-flex>
-          </v-layout>
-          <v-data-table
-            :headers="headers"
-            :items="ranking"
-            :options.sync="options"
-            :footer-props="{
-              showFirstLastPage: true,
-              'items-per-page-options': rows_per_page_items,
-            }"
-            :search="search"
-            :loading="loading"
-            class="elevation-1"
-            dense
-          >
-            <template #item.name="props">
-              <v-tooltip top>
-                <template #activator="{ on }">
-                  <span v-on="on">{{ props.item.name }}</span>
-                </template>
-                <span>{{ props.item.uuid }}</span>
-              </v-tooltip>
-            </template>
-            <template #item.epoch="props">
-              {{
-                dateFns.format(
-                  dateFns.fromUnixTime(props.item.epoch),
-                  'yyyy/MM/dd HH:mm:ss',
-                )
-              }}
-            </template>
-          </v-data-table>
+            </v-col>
+          </v-row>
+          <div class="scroll-inner">
+            <v-data-table
+              :headers="headers"
+              :items="ranking"
+              :options.sync="options"
+              :footer-props="{
+                showFirstLastPage: true,
+                'items-per-page-options': rows_per_page_items,
+              }"
+              :search="search"
+              :loading="loading"
+              class="elevation-1"
+              :mobile-breakpoint="0"
+              dense
+            >
+              <template #item.name="props">
+                <v-tooltip top>
+                  <template #activator="{ on }">
+                    <span v-on="on">{{ props.item.name }}</span>
+                  </template>
+                  <span>{{ props.item.uuid }}</span>
+                </v-tooltip>
+              </template>
+              <template #item.epoch="props">
+                {{
+                  dateFns.format(
+                    dateFns.fromUnixTime(props.item.epoch),
+                    'yyyy/MM/dd HH:mm:ss',
+                  )
+                }}
+              </template>
+            </v-data-table>
+          </div>
         </v-card-text>
       </v-card>
     </v-col>
@@ -105,13 +108,16 @@ export default {
     // ランキングの取得
     async setRanking() {
       try {
-        let { data } = await this.$axios.get('https://api.mchel.net/v1/ban');
+        const { data } = await this.$axios.get('https://api.mchel.net/v1/ban');
         console.log(data);
         this.ranking = data;
       } catch (e) {
         console.error(e.response);
       }
     },
+  },
+  head: {
+    title: 'Ban',
   },
 };
 </script>

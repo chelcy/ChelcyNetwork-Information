@@ -1,4 +1,4 @@
-import Vue from 'vue'
-import CountryFlag from 'vue-country-flag'
+import Vue from 'vue';
+import CountryFlag from 'vue-country-flag';
 
-Vue.component('country-flag', CountryFlag)
+Vue.component('country-flag', CountryFlag);

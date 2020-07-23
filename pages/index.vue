@@ -8,18 +8,9 @@
       xl="3"
     >
       <v-card class="elevation-5 ma-2">
-        <v-card-title
-          primary-title
-          :class="item.color + ' ' + item.density_light"
-        >
+        <v-card-title primary-title :class="[item.color, item.density_light]">
           <h4 class="mx-1">{{ item.text }}</h4>
         </v-card-title>
-        <v-card-text v-if="!item.data" class="text-xs-center">
-          <v-progress-circular
-            indeterminate
-            :color="item.color"
-          ></v-progress-circular>
-        </v-card-text>
         <v-list dense v-if="item.data">
           <v-list-item>
             <v-list-item-content>プレイヤー数</v-list-item-content>
@@ -49,6 +40,9 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
+        <v-card-text v-else>
+          <v-skeleton-loader type="table-heading@3"></v-skeleton-loader>
+        </v-card-text>
       </v-card>
     </v-col>
   </v-row>
@@ -96,21 +90,24 @@ export default {
       await this.setStatus();
     },
     async setStatus() {
-      let tasks = [];
-      this.statusData.forEach((server) => {
-        server.data = null;
-        let task = this.$axios
-          .get('https://api.mchel.net/v1/server/' + server.key)
-          .then((res) => {
-            server.data = res.data;
-          })
-          .catch((e) => {
-            console.log(e.response);
-          });
-        tasks.push(task);
-      });
-      await Promise.all(tasks);
+      await Promise.all(
+        this.statusData.map(async (server) => {
+          try {
+            const { data: statusRes } = await this.$axios.get(
+              `https://api.mchel.net/v1/server/${server.key}`,
+            );
+            console.log(server.key, statusRes);
+            server.data = statusRes;
+          } catch (error) {
+            console.error(error);
+            server.data = null;
+          }
+        }),
+      );
     },
+  },
+  head: {
+    title: 'Welcome',
   },
 };
 </script>

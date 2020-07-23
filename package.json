@@ -1,7 +1,11 @@
 {
-  "name": "chelcynetwork-ranking",
+  "name": "chelcynetwork-information",
   "version": "1.0.0",
   "private": true,
+  "author": {
+    "name": "Chelcy",
+    "url": "https://twitter.com/chelcy_nico"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",

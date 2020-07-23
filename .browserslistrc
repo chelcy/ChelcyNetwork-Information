@@ -1,0 +1,4 @@
+defaults
+android>=4.4
+not IE < 10
+not dead

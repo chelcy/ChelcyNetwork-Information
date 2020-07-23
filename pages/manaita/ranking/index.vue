@@ -21,23 +21,26 @@
               ></v-text-field>
             </v-col>
           </v-row>
-          <v-data-table
-            :headers="headers"
-            :items="ranking"
-            :options.sync="options"
-            :footer-props="{
-              showFirstLastPage: true,
-              'items-per-page-options': rows_per_page_items,
-            }"
-            :search="search"
-            :loading="loading"
-            class="elevation-1"
-            dense
-          >
-            <template #item.block="props">
-              {{ Number(props.item.block).toLocaleString() }}
-            </template>
-          </v-data-table>
+          <div class="scroll-inner">
+            <v-data-table
+              :headers="headers"
+              :items="ranking"
+              :options.sync="options"
+              :footer-props="{
+                showFirstLastPage: true,
+                'items-per-page-options': rows_per_page_items,
+              }"
+              :search="search"
+              :loading="loading"
+              class="elevation-1"
+              :mobile-breakpoint="0"
+              dense
+            >
+              <template #item.block="props">
+                {{ Number(props.item.block).toLocaleString() }}
+              </template>
+            </v-data-table>
+          </div>
         </v-card-text>
       </v-card>
     </v-col>
@@ -84,7 +87,7 @@ export default {
     // ランキングの取得
     async setRanking() {
       try {
-        let { data } = await this.$axios.get(
+        const { data } = await this.$axios.get(
           'https://api.mchel.net/v1/manaita/ranking',
         );
         console.log(data);
@@ -93,6 +96,9 @@ export default {
         console.error(e.response);
       }
     },
+  },
+  head: {
+    title: 'Manaita ranking',
   },
 };
 </script>

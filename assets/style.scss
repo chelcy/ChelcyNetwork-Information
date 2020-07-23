@@ -1,0 +1,11 @@
+html {
+  color: red !important;
+}
+
+.scroll-inner {
+  overflow-x: auto;
+
+  .v-data-table {
+    min-width: 600px;
+  }
+}

@@ -21,33 +21,36 @@
               ></v-text-field>
             </v-col>
           </v-row>
-          <v-data-table
-            :headers="headers"
-            :items="ranking"
-            :options.sync="options"
-            hide-default-footer
-            :search="search"
-            :loading="loading"
-            class="elevation-1"
-            dense
-          >
-            <template #item.time="props">
-              {{
-                dateFns.format(
-                  new Date(props.item.time - 9 * 60 * 60 * 1000),
-                  'HH:mm:ss.SSS',
-                )
-              }}
-            </template>
-            <template #item.epoch="props">
-              {{
-                dateFns.format(
-                  dateFns.fromUnixTime(props.item.epoch),
-                  'yyyy/MM/dd HH:mm:ss',
-                )
-              }}
-            </template>
-          </v-data-table>
+          <div class="scroll-inner">
+            <v-data-table
+              :headers="headers"
+              :items="ranking"
+              :options.sync="options"
+              hide-default-footer
+              :search="search"
+              :loading="loading"
+              class="elevation-1"
+              :mobile-breakpoint="0"
+              dense
+            >
+              <template #item.time="props">
+                {{
+                  dateFns.format(
+                    new Date(props.item.time - 9 * 60 * 60 * 1000),
+                    'HH:mm:ss.SSS',
+                  )
+                }}
+              </template>
+              <template #item.epoch="props">
+                {{
+                  dateFns.format(
+                    dateFns.fromUnixTime(props.item.epoch),
+                    'yyyy/MM/dd HH:mm:ss',
+                  )
+                }}
+              </template>
+            </v-data-table>
+          </div>
         </v-card-text>
       </v-card>
     </v-col>
@@ -104,8 +107,8 @@ export default {
     // ランキングの取得
     async setRanking(name) {
       try {
-        let { data } = await this.$axios.get(
-          'https://api.mchel.net/v1/athletic/' + name + '/ranking',
+        const { data } = await this.$axios.get(
+          `https://api.mchel.net/v1/athletic/${name}/ranking`,
         );
         console.log(data);
         this.ranking = data;
@@ -119,6 +122,9 @@ export default {
       this.init();
       this.search = null;
     },
+  },
+  head: {
+    title: 'Athletics ranking',
   },
 };
 </script>
