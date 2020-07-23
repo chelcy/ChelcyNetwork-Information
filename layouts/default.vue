@@ -50,7 +50,7 @@
 
         <v-list-item to="/manaita/ranking" router exact>
           <v-list-item-action>
-            <v-icon>fa fa-truck-pickup</v-icon>
+            <v-icon>fas fa-mountain</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Manaita</v-list-item-title>
