@@ -14,12 +14,14 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
+    "@nuxtjs/markdownit": "^1.2.10",
     "date-fns": "^2.15.0",
     "nuxt": "^2.13.0",
     "vue-country-flag": "^2.0.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
+    "@nuxtjs/google-analytics": "^2.4.0",
     "@nuxtjs/vuetify": "^1.11.2",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",

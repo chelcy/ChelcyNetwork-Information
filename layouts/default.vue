@@ -102,26 +102,40 @@
         <nuxt />
       </v-container>
     </v-main>
-    <v-footer app dark color="light-blue accent-4" absolute inset>
+    <v-footer app dark color="light-blue accent-4" absolute inset class="py-1">
       <v-spacer></v-spacer>
       <div class="mx-2">
         <span>&copy; 2020 Chelcy</span>
       </div>
       <div class="mx-2">
-        <v-btn icon href="https://twitter.com/chelcy_nico" target="_blank">
-          <v-icon>
+        <v-btn
+          icon
+          small
+          href="https://twitter.com/chelcy_nico"
+          target="_blank"
+        >
+          <v-icon small>
             fab fa-twitter
           </v-icon>
         </v-btn>
         <v-btn
           icon
+          small
           href="https://github.com/chelcy/ChelcyNetwork-Information"
           target="_blank"
         >
-          <v-icon>
+          <v-icon small>
             fab fa-github
           </v-icon>
         </v-btn>
+      </div>
+      <div class="mx-2">
+        <a
+          @click="$router.push('/privacy-policy')"
+          class="white--text text-caption"
+        >
+          プライバシーポリシー
+        </a>
       </div>
       <v-spacer></v-spacer>
     </v-footer>
