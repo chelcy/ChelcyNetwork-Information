@@ -95,12 +95,6 @@
           </v-icon>
           <span class="text-caption">@ChelcyNetwork</span>
         </v-btn>
-        <v-btn text href="https://twitter.com/chelcy_nico" target="_blank">
-          <v-icon class="mr-1">
-            fab fa-twitter
-          </v-icon>
-          <span class="text-caption">@chelcy_nico</span>
-        </v-btn>
       </template>
     </v-app-bar>
     <v-main>
@@ -110,8 +104,24 @@
     </v-main>
     <v-footer app dark color="light-blue accent-4" absolute inset>
       <v-spacer></v-spacer>
-      <div>
+      <div class="mx-2">
         <span>&copy; 2020 Chelcy</span>
+      </div>
+      <div class="mx-2">
+        <v-btn icon href="https://twitter.com/chelcy_nico" target="_blank">
+          <v-icon>
+            fab fa-twitter
+          </v-icon>
+        </v-btn>
+        <v-btn
+          icon
+          href="https://github.com/chelcy/ChelcyNetwork-Information"
+          target="_blank"
+        >
+          <v-icon>
+            fab fa-github
+          </v-icon>
+        </v-btn>
       </div>
       <v-spacer></v-spacer>
     </v-footer>
