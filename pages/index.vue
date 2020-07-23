@@ -93,9 +93,9 @@ export default {
       await Promise.all(
         this.statusData.map(async (server) => {
           try {
-            const { data: statusRes } = await this.$axios.get(
+            const statusRes = await fetch(
               `https://api.mchel.net/v1/server/${server.key}`,
-            );
+            ).then((r) => r.json());
             server.data = statusRes;
           } catch (error) {
             console.error(error);

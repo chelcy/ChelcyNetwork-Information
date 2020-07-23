@@ -108,7 +108,9 @@ export default {
     // ランキングの取得
     async setRanking() {
       try {
-        const { data } = await this.$axios.get('https://api.mchel.net/v1/ban');
+        const data = await fetch('https://api.mchel.net/v1/ban').then((r) =>
+          r.json(),
+        );
         this.ranking = data;
       } catch (e) {
         console.error(e.response);

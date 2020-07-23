@@ -148,9 +148,10 @@ export default {
   methods: {
     async getAthletics() {
       try {
-        const { data } = await this.$axios.get(
+        const data = await fetch(
           'https://asia-east2-freegcptrial.cloudfunctions.net/chelcynetwork-athletic-json',
-        );
+        ).then((r) => r.json());
+
         this.athletics = Object.entries(data)
           .map(([key, value]) => value)
           .reduce((acc, val) => acc.concat(val), []);

@@ -14,7 +14,6 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.11.0",
     "date-fns": "^2.15.0",
     "nuxt": "^2.13.0",
     "vue-country-flag": "^2.0.1"

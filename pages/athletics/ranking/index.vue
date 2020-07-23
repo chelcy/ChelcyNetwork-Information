@@ -107,9 +107,9 @@ export default {
     // ランキングの取得
     async setRanking(name) {
       try {
-        const { data } = await this.$axios.get(
+        const data = await fetch(
           `https://api.mchel.net/v1/athletic/${name}/ranking`,
-        );
+        ).then((r) => r.json());
         this.ranking = data;
       } catch (e) {
         console.error(e.response);
