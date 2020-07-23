@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-navigation-drawer v-model="drawer" :clipped="true" fixed app>
       <v-list dense>
         <v-list-item
@@ -14,6 +14,7 @@
           </v-list-item-action>
           <v-list-item-title v-text="item.title" />
         </v-list-item>
+
         <v-list-item to="/general" router exact>
           <v-list-item-action>
             <v-icon>fa fa-dna</v-icon>
@@ -21,31 +22,24 @@
           <v-list-item-title>General</v-list-item-title>
         </v-list-item>
 
-        <v-list-group prepend-icon="fa-running" value="true">
-          <template v-slot:activator>
-            <v-list-item-title>Athletics</v-list-item-title>
+        <v-list-group prepend-icon="fa-running" value="true" no-action>
+          <template #activator>
+            <v-list-item-content>
+              <v-list-item-title>Athletics</v-list-item-title>
+            </v-list-item-content>
           </template>
 
-          <v-list-group
-            v-for="(category, index) in athletics"
-            :key="index"
-            no-action
-            sub-group
-          >
-            <template v-slot:activator>
-              <v-list-item>
-                <v-list-item-title>{{ category.head }}</v-list-item-title>
-              </v-list-item>
-            </template>
+          <v-list-item link to="/athletics/ranking">
+            <v-list-item-content>
+              <v-list-item-title>Ranking</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
 
-            <v-list-item
-              v-for="(athletic, i) in category.name"
-              :key="i"
-              @click="toDetail(athletic)"
-            >
-              <v-list-item-title>{{ athletic }}</v-list-item-title>
-            </v-list-item>
-          </v-list-group>
+          <v-list-item link to="/athletics/hardAthletics">
+            <v-list-item-content>
+              <v-list-item-title>Hard athletics</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list-group>
 
         <v-list-item to="/manaita/ranking" router exact>
@@ -82,6 +76,7 @@
         style="cursor: pointer;"
       />
       <v-spacer></v-spacer>
+
       <template v-if="$vuetify.breakpoint.mdAndUp">
         <v-btn text href="https://www.mchel.net" target="_blank">
           <v-avatar size="29" class="mr-1">
@@ -97,16 +92,20 @@
         </v-btn>
       </template>
     </v-app-bar>
+
     <v-main>
       <v-container>
         <nuxt />
       </v-container>
     </v-main>
+
     <v-footer app dark color="light-blue accent-4" absolute inset class="py-1">
       <v-spacer></v-spacer>
+
       <div class="mx-2">
         <span>&copy; 2020 Chelcy</span>
       </div>
+
       <div class="mx-2">
         <v-btn
           icon
@@ -129,6 +128,7 @@
           </v-icon>
         </v-btn>
       </div>
+
       <div class="mx-2">
         <a
           @click="$router.push('/privacy-policy')"
@@ -137,6 +137,7 @@
           プライバシーポリシー
         </a>
       </div>
+
       <v-spacer></v-spacer>
     </v-footer>
   </v-app>

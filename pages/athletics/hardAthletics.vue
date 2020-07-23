@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="12">
         <h2>
-          <span class="mr-4">タイムアタックランキング</span>
+          <span class="mr-4">難関アスレクリア者</span>
           <v-btn dark @click="dialog.show = true">
             <span class="mr-4">選択</span>
             <v-icon>fas fa-bars</v-icon>
@@ -43,14 +43,6 @@
                 :mobile-breakpoint="0"
                 dense
               >
-                <template #item.time="props">
-                  {{
-                    dateFns.format(
-                      new Date(props.item.time - 9 * 60 * 60 * 1000),
-                      'HH:mm:ss.SSS',
-                    )
-                  }}
-                </template>
                 <template #item.epoch="props">
                   {{
                     dateFns.format(
@@ -82,32 +74,16 @@
         </v-toolbar>
         <v-divider></v-divider>
         <v-card-text class="black--text">
-          <v-list dense class="athletic-select-list">
-            <v-list-group
-              v-for="(category, categoryIndex) in computedAthletics"
-              :key="categoryIndex"
-              v-model="category.active"
-              no-action
+          <v-list dense>
+            <v-list-item
+              v-for="(athName, athNameIndex) in computedAthletics"
+              :key="athNameIndex"
+              @click="toDetail(athName)"
             >
-              <template #activator>
-                <v-list-item-content>
-                  <v-list-item-title>
-                    {{ category.head }}
-                    ({{ category.name.length }})
-                  </v-list-item-title>
-                </v-list-item-content>
-              </template>
-
-              <v-list-item
-                v-for="(subName, subNameIndex) in category.name"
-                :key="subNameIndex"
-                @click="toDetail(subName)"
-              >
-                <v-list-item-content>
-                  <v-list-item-title v-text="subName"></v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list-group>
+              <v-list-item-content>
+                <v-list-item-title v-text="athName"></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
           </v-list>
         </v-card-text>
       </v-card>
@@ -136,7 +112,7 @@ export default {
     loading: false,
     headers: [
       {
-        text: '順位',
+        text: '',
         value: 'rank',
       },
       {
@@ -144,11 +120,7 @@ export default {
         value: 'name',
       },
       {
-        text: 'アスレタイム',
-        value: 'time',
-      },
-      {
-        text: '更新日時',
+        text: 'クリア日時',
         value: 'epoch',
       },
     ],
@@ -158,16 +130,10 @@ export default {
   computed: {
     // フィルターしたアスレチック一覧
     computedAthletics() {
-      return this.athletics.map((ath, i) => {
-        return {
-          ...ath,
-          active: i === 0,
-          name: ath.name.filter((n) => {
-            return this.dialog.search
-              ? n.toLowerCase().includes(this.dialog.search.toLowerCase())
-              : true;
-          }),
-        };
+      return this.athletics.filter((n) => {
+        return this.dialog.search
+          ? n.toLowerCase().includes(this.dialog.search.toLowerCase())
+          : true;
       });
     },
   },
@@ -182,7 +148,7 @@ export default {
     async getAthletics() {
       try {
         const data = await fetch(
-          'https://asia-east2-freegcptrial.cloudfunctions.net/chelcynetwork-athletic-json',
+          'https://asia-east2-freegcptrial.cloudfunctions.net/chelcynetwork-athletic-json/hard',
         ).then((r) => r.json());
 
         this.athletics = Object.entries(data)
@@ -199,7 +165,7 @@ export default {
         this.name = athleticName;
         try {
           const data = await fetch(
-            `https://api.mchel.net/v1/athletic/${this.name}/ranking`,
+            `https://api.mchel.net/v1/athletic/hard/${this.name}`,
           ).then((r) => r.json());
           this.ranking = data;
         } catch (e) {
@@ -215,7 +181,7 @@ export default {
     toDetail(name) {
       this.dialog.show = false;
       this.$router.push({
-        name: 'athletics-ranking',
+        name: 'athletics-hardAthletics',
         query: {
           name: name,
         },
@@ -229,7 +195,7 @@ export default {
     },
   },
   head: {
-    title: 'Athletics ranking',
+    title: 'Hard athletics',
   },
 };
 </script>
