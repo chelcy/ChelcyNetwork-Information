@@ -78,7 +78,6 @@ export default {
         const { data } = await this.$axios.get(
           'https://api.mchel.net/v1/player_country',
         );
-        console.log(data);
         this.ranking = data;
       } catch (e) {
         console.error(e.response);

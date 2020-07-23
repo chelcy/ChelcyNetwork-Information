@@ -109,7 +109,6 @@ export default {
     async setRanking() {
       try {
         const { data } = await this.$axios.get('https://api.mchel.net/v1/ban');
-        console.log(data);
         this.ranking = data;
       } catch (e) {
         console.error(e.response);

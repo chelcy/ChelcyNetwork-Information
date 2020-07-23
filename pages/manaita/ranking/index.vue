@@ -90,7 +90,6 @@ export default {
         const { data } = await this.$axios.get(
           'https://api.mchel.net/v1/manaita/ranking',
         );
-        console.log(data);
         this.ranking = data;
       } catch (e) {
         console.error(e.response);

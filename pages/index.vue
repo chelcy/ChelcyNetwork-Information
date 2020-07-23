@@ -96,7 +96,6 @@ export default {
             const { data: statusRes } = await this.$axios.get(
               `https://api.mchel.net/v1/server/${server.key}`,
             );
-            console.log(server.key, statusRes);
             server.data = statusRes;
           } catch (error) {
             console.error(error);
