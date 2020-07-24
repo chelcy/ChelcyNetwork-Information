@@ -99,14 +99,21 @@
       </v-container>
     </v-main>
 
-    <v-footer app dark color="light-blue accent-4" absolute inset class="py-1">
+    <v-footer
+      app
+      dark
+      color="light-blue accent-4"
+      absolute
+      inset
+      class="py-1 px-0"
+    >
       <v-spacer></v-spacer>
 
-      <div class="mx-2">
+      <div class="mx-1 text-body-2">
         <span>&copy; 2020 Chelcy</span>
       </div>
 
-      <div class="mx-2">
+      <div class="mx-1">
         <v-btn
           icon
           small
@@ -127,9 +134,17 @@
             fab fa-github
           </v-icon>
         </v-btn>
+        <v-btn
+          icon
+          small
+          href="https://github.com/chelcy/ChelMoji/releases"
+          target="_blank"
+        >
+          ち
+        </v-btn>
       </div>
 
-      <div class="mx-2">
+      <div class="mx-1">
         <a
           @click="$router.push('/privacy-policy')"
           class="white--text text-caption"
