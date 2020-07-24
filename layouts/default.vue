@@ -22,7 +22,7 @@
           <v-list-item-title>General</v-list-item-title>
         </v-list-item>
 
-        <v-list-group prepend-icon="fa-running" value="true" no-action>
+        <v-list-group prepend-icon="fas fa-running" value="true" no-action>
           <template #activator>
             <v-list-item-content>
               <v-list-item-title>Athletics</v-list-item-title>

@@ -35,6 +35,10 @@ export default {
         href:
           'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://use.fontawesome.com/releases/v5.14.0/css/all.css',
+      },
     ],
   },
   /*
@@ -49,7 +53,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['@/plugins/icons', '@/plugins/country-flag.js'],
+  plugins: ['@/plugins/country-flag.js'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
