@@ -29,9 +29,15 @@
             </v-list-item-content>
           </template>
 
-          <v-list-item link to="/athletics/ranking">
+          <v-list-item link to="/athletics/timeRanking">
             <v-list-item-content>
-              <v-list-item-title>Ranking</v-list-item-title>
+              <v-list-item-title>Time Ranking</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item link to="/athletics/countRanking">
+            <v-list-item-content>
+              <v-list-item-title>Count Ranking</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
 
@@ -188,14 +194,6 @@ export default {
       } catch (e) {
         console.error(e.response);
       }
-    },
-    toDetail(name) {
-      this.$router.push({
-        name: 'athletics-ranking',
-        query: {
-          name: name,
-        },
-      });
     },
   },
 };

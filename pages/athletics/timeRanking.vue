@@ -215,7 +215,7 @@ export default {
     toDetail(name) {
       this.dialog.show = false;
       this.$router.push({
-        name: 'athletics-ranking',
+        name: 'athletics-timeRanking',
         query: {
           name: name,
         },
@@ -229,7 +229,7 @@ export default {
     },
   },
   head: {
-    title: 'Athletics ranking',
+    title: 'Athletics time ranking',
   },
 };
 </script>
