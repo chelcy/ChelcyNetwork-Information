@@ -3,12 +3,15 @@
     <v-row>
       <v-col cols="12">
         <h2>
-          <span class="mr-4">クリア回数ランキング</span>
+          <span class="mr-4">クリア回数ランキング (Beta)</span>
           <v-btn dark @click="dialog.show = true">
             <span class="mr-4">選択</span>
             <v-icon>fas fa-bars</v-icon>
           </v-btn>
         </h2>
+        <div class="mt-2">
+          <h4>(クリア回数は、タイムアタック時のデータのみ計上しています。)</h4>
+        </div>
       </v-col>
       <v-col cols="12" v-if="name">
         <v-card>

@@ -37,7 +37,7 @@
 
           <v-list-item link to="/athletics/countRanking">
             <v-list-item-content>
-              <v-list-item-title>Count Ranking</v-list-item-title>
+              <v-list-item-title>Count Ranking (Beta)</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
 
