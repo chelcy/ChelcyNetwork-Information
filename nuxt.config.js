@@ -1,6 +1,8 @@
 import colors from 'vuetify/es5/util/colors';
 import ja from 'vuetify/es5/locale/ja';
 
+import { generateHead, defaultMeta } from './mixins/meta';
+
 export default {
   /*
    ** Nuxt rendering mode
@@ -22,12 +24,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          'ちぇる鯖の各種情報を表示するwebです。アスレランキングやサーバーステータスなどが確認できます。',
-      },
+      ...generateHead(defaultMeta).meta,
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
