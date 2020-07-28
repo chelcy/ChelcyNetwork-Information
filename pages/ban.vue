@@ -60,6 +60,7 @@
   </v-row>
 </template>
 <script>
+import metaMixin from '@/mixins/meta';
 import { format, fromUnixTime } from 'date-fns';
 
 export default {
@@ -96,6 +97,14 @@ export default {
     ],
     ranking: [],
   }),
+  computed: {
+    meta() {
+      return {
+        title: 'Ban',
+        url: window.location.href,
+      };
+    },
+  },
   created() {
     this.init();
   },
@@ -117,8 +126,6 @@ export default {
       }
     },
   },
-  head: {
-    title: 'Ban',
-  },
+  mixins: [metaMixin],
 };
 </script>

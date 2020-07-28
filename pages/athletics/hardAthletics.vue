@@ -92,6 +92,7 @@
 </template>
 
 <script>
+import metaMixin from '@/mixins/meta';
 import { format, fromUnixTime } from 'date-fns';
 
 export default {
@@ -128,6 +129,12 @@ export default {
     name: null,
   }),
   computed: {
+    meta() {
+      return {
+        title: `Hard athletics - ${this.name || ''}`,
+        url: window.location.href,
+      };
+    },
     // フィルターしたアスレチック一覧
     computedAthletics() {
       return this.athletics.filter((n) => {
@@ -188,14 +195,12 @@ export default {
       });
     },
   },
+  mixins: [metaMixin],
   watch: {
     $route(to, from) {
       this.loadTable();
       this.search = null;
     },
-  },
-  head: {
-    title: 'Hard athletics',
   },
 };
 </script>

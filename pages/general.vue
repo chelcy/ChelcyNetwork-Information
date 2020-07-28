@@ -33,6 +33,7 @@
   </v-row>
 </template>
 <script>
+import metaMixin from '@/mixins/meta';
 import countryData from '@/assets/country.json';
 
 export default {
@@ -63,6 +64,14 @@ export default {
     ],
     ranking: [],
   }),
+  computed: {
+    meta() {
+      return {
+        title: 'General',
+        url: window.location.href,
+      };
+    },
+  },
   created() {
     this.init();
   },
@@ -87,8 +96,6 @@ export default {
       return countryData[code] ? countryData[code].name : '';
     },
   },
-  head: {
-    title: 'General',
-  },
+  mixins: [metaMixin],
 };
 </script>

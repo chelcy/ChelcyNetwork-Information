@@ -25,7 +25,8 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'ちぇる鯖の各種情報を表示するweb',
+        content:
+          'ちぇる鯖の各種情報を表示するwebです。アスレランキングやサーバーステータスなどが確認できます。',
       },
     ],
     link: [

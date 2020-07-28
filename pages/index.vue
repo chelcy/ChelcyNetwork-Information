@@ -83,6 +83,8 @@
 </template>
 
 <script>
+import metaMixin from '@/mixins/meta';
+
 export default {
   data: () => ({
     playerCount: null,
@@ -118,6 +120,14 @@ export default {
       },
     ],
   }),
+  computed: {
+    meta() {
+      return {
+        title: 'Welcome',
+        url: window.location.href,
+      };
+    },
+  },
   created() {
     this.init();
   },
@@ -165,8 +175,6 @@ export default {
       );
     },
   },
-  head: {
-    title: 'Welcome',
-  },
+  mixins: [metaMixin],
 };
 </script>

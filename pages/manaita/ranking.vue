@@ -47,6 +47,8 @@
   </v-row>
 </template>
 <script>
+import metaMixin from '@/mixins/meta';
+
 export default {
   data: () => ({
     search: '',
@@ -75,6 +77,14 @@ export default {
     ],
     ranking: [],
   }),
+  computed: {
+    meta() {
+      return {
+        title: 'Manaita ranking',
+        url: window.location.href,
+      };
+    },
+  },
   created() {
     this.init();
   },
@@ -96,8 +106,6 @@ export default {
       }
     },
   },
-  head: {
-    title: 'Manaita ranking',
-  },
+  mixins: [metaMixin],
 };
 </script>

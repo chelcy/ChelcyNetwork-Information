@@ -116,6 +116,7 @@
 </template>
 
 <script>
+import metaMixin from '@/mixins/meta';
 import { format, fromUnixTime } from 'date-fns';
 
 export default {
@@ -156,6 +157,12 @@ export default {
     name: null,
   }),
   computed: {
+    meta() {
+      return {
+        title: `Athletics time ranking - ${this.name || ''}`,
+        url: window.location.href,
+      };
+    },
     // フィルターしたアスレチック一覧
     computedAthletics() {
       return this.athletics.map((ath, i) => {
@@ -222,14 +229,12 @@ export default {
       });
     },
   },
+  mixins: [metaMixin],
   watch: {
     $route(to, from) {
       this.loadTable();
       this.search = null;
     },
-  },
-  head: {
-    title: 'Athletics time ranking',
   },
 };
 </script>

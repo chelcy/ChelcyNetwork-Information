@@ -7,11 +7,13 @@
 </template>
 
 <script>
+import metaMixin from '@/mixins/meta';
 import policy from '@/assets/privacy-policy.md';
 
 export default {
   data: () => ({
     policy,
   }),
+  mixins: [metaMixin],
 };
 </script>
